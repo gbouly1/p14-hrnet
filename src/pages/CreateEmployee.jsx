@@ -1,7 +1,7 @@
+import Modal from "hrnet-modal-gbouly";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import InputField from "../components/InputField";
-import Modal from "../components/Modal";
 import SelectField from "../components/SelectField";
 import { useEmployees } from "../context/EmployeeContext";
 import "../index.css";
@@ -207,13 +207,13 @@ function CreateEmployee() {
         </form>
       </div>
 
-      {/* Utilisation du composant Modal avec le nom de l'employé */}
-      <Modal
-        isOpen={showModal}
-        onClose={closeModal}
-        title="Success!"
-        message={`Employee ${lastEmployee.firstName} ${lastEmployee.lastName} created successfully.`}
-      />
+      {/* Utilisation du composant Modal importé depuis npm */}
+      <Modal isOpen={showModal} onClose={closeModal} title="Success!">
+        <p>
+          Employee {lastEmployee.firstName} {lastEmployee.lastName} created
+          successfully.
+        </p>
+      </Modal>
     </div>
   );
 }
