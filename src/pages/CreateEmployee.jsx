@@ -54,7 +54,7 @@ function CreateEmployee() {
       address: {
         street,
         city,
-        state,
+        state: state,
         zipCode,
       },
     };
@@ -83,6 +83,8 @@ function CreateEmployee() {
     setState("");
     setZipCode("");
   };
+
+  console.log(state);
 
   // Fonction pour fermer la modale
   const closeModal = () => {
@@ -156,7 +158,6 @@ function CreateEmployee() {
                 onChange={(e) => setStreet(e.target.value)}
                 required
               />
-
               <InputField
                 id="city"
                 label="City"
@@ -164,17 +165,18 @@ function CreateEmployee() {
                 onChange={(e) => setCity(e.target.value)}
                 required
               />
-
               <SelectField
                 id="state"
                 label="State"
                 value={state}
                 onChange={(e) => setState(e.target.value)}
-                options={states}
+                options={states.map((state) => ({
+                  name: state.name,
+                  value: state.abbreviation,
+                }))}
                 placeholder="Select State"
                 required
               />
-
               <InputField
                 id="zipcode"
                 label="Zip Code"
