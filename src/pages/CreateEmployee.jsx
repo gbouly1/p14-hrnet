@@ -54,7 +54,7 @@ function CreateEmployee() {
       address: {
         street,
         city,
-        state: state,
+        state,
         zipCode,
       },
     };
@@ -84,8 +84,6 @@ function CreateEmployee() {
     setZipCode("");
   };
 
-  console.log(state);
-
   // Fonction pour fermer la modale
   const closeModal = () => {
     setShowModal(false);
@@ -102,7 +100,6 @@ function CreateEmployee() {
           View Current Employees
         </Link>
       </div>
-
       <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
         <h2 className="text-xl  mb-6 font-['Helvetica']">Create Employee</h2>
 
@@ -208,14 +205,23 @@ function CreateEmployee() {
           </button>
         </form>
       </div>
-
       {/* Utilisation du composant Modal importé depuis npm */}
-      <Modal isOpen={showModal} onClose={closeModal} title="Success!">
+      <Modal
+        isOpen={showModal}
+        onClose={closeModal}
+        title="Success!"
+        style={{
+          title: {
+            color: "#0d6efd",
+          },
+        }}
+      >
         <p>
           Employee {lastEmployee.firstName} {lastEmployee.lastName} created
           successfully.
         </p>
       </Modal>
+      w
     </div>
   );
 }
